@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travesía Nostálgica - Juego de Mesa Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-chess-board"></i> Travesía Nostálgica</h1>
+        <p class="subtitle">Un viaje emocional a través de la nostalgia - Juego de mesa interactivo</p>
+
+        <div class="pregame-customization" id="pregame-customization">
+            <h2><i class="fas fa-users"></i> Configuración de Jugadores</h2>
+            <div class="player-setup-area">
+                <div>
+                    <label for="player-count">Número de Jugadores (3-6):</label>
+                    <input type="number" id="player-count" name="player-count" min="3" max="6" value="3">
+                </div>
+                <div id="player-names-inputs-container">
+                    <div class="player-name-input-group" id="p1-name-group">
+                        <label for="player-1-name-input">Nombre Jugador 1:</label>
+                        <input type="text" id="player-1-name-input" class="player-name-input" placeholder="Jugador 1">
+                    </div>
+                    <div class="player-name-input-group" id="p2-name-group">
+                        <label for="player-2-name-input">Nombre Jugador 2:</label>
+                        <input type="text" id="player-2-name-input" class="player-name-input" placeholder="Jugador 2">
+                    </div>
+                    <div class="player-name-input-group" id="p3-name-group">
+                        <label for="player-3-name-input">Nombre Jugador 3:</label>
+                        <input type="text" id="player-3-name-input" class="player-name-input" placeholder="Jugador 3">
+                    </div>
+                    <div class="player-name-input-group" id="p4-name-group" style="display:none;">
+                        <label for="player-4-name-input">Nombre Jugador 4:</label>
+                        <input type="text" id="player-4-name-input" class="player-name-input" placeholder="Jugador 4">
+                    </div>
+                    <div class="player-name-input-group" id="p5-name-group" style="display:none;">
+                        <label for="player-5-name-input">Nombre Jugador 5:</label>
+                        <input type="text" id="player-5-name-input" class="player-name-input" placeholder="Jugador 5">
+                    </div>
+                    <div class="player-name-input-group" id="p6-name-group" style="display:none;">
+                        <label for="player-6-name-input">Nombre Jugador 6:</label>
+                        <input type="text" id="player-6-name-input" class="player-name-input" placeholder="Jugador 6">
+                    </div>
+                </div>
+            </div>
+            
+            <h2><i class="fas fa-palette"></i> Personaliza tus Cartas Visuales (Opcional)</h2>
+            <p>¡Crea elementos visuales para el juego! (Esto no añade cartas jugables al mazo)</p>
+            <div class="custom-card-input-area">
+                <input type="text" id="custom-card-title" placeholder="Título (Ej: Nombre Jugador / Rol)">
+                <textarea id="custom-card-description" placeholder="Descripción de la carta o habilidad"></textarea>
+                <input type="text" id="custom-card-image-url" placeholder="URL de la Imagen (opcional)">
+                <button id="add-custom-card-btn" class="game-button"><i class="fas fa-plus-circle"></i> Añadir Elemento Visual</button>
+            </div>
+            <div id="custom-cards-display-area" class="custom-cards-display">
+                </div>
+        </div>
+        
+        <div class="game-info">
+            <div class="info-box">
+                <i class="fas fa-user"></i>
+                <div class="current-turn" id="current-turn-display">
+                    </div>
+            </div>
+            <div class="info-box">
+                <i class="fas fa-dice-d6"></i>
+                <div class="dice-display" id="dice">
+                    </div>
+            </div>
+        </div>
+
+        <div class="player-info-section">
+            <div class="player-card" id="player-card-1">
+                <div class="player-color-indicator" style="background-color: var(--blue);"></div>
+                <h3 id="player1-name">Jugador 1</h3>
+                <img id="player1-role-image" src="images/roles/default.jpg" alt="Rol del Jugador 1" class="player-role-image">
+                <p>Posición: <span id="player1-pos">0</span></p>
+                <p>Puntos: <span id="player1-points">0</span></p>
+                <p>Rol: <span id="player1-role"></span></p>
+                <p class="player-role-ability" id="player1-role-ability"></p>
+            </div>
+            <div class="player-card" id="player-card-2">
+                <div class="player-color-indicator" style="background-color: var(--red);"></div>
+                <h3 id="player2-name">Jugador 2</h3>
+                <img id="player2-role-image" src="images/roles/default.jpg" alt="Rol del Jugador 2" class="player-role-image">
+                <p>Posición: <span id="player2-pos">0</span></p>
+                <p>Puntos: <span id="player2-points">0</span></p>
+                <p>Rol: <span id="player2-role"></span></p>
+                <p class="player-role-ability" id="player2-role-ability"></p>
+            </div>
+            <div class="player-card" id="player-card-3">
+                <div class="player-color-indicator" style="background-color: var(--green);"></div>
+                <h3 id="player3-name">Jugador 3</h3>
+                <img id="player3-role-image" src="images/roles/default.jpg" alt="Rol del Jugador 3" class="player-role-image">
+                <p>Posición: <span id="player3-pos">0</span></p>
+                <p>Puntos: <span id="player3-points">0</span></p>
+                <p>Rol: <span id="player3-role"></span></p>
+                <p class="player-role-ability" id="player3-role-ability"></p>
+            </div>
+            <div class="player-card" id="player-card-4" style="display:none;">
+                <div class="player-color-indicator" style="background-color: var(--purple);"></div>
+                <h3 id="player4-name">Jugador 4</h3>
+                <img id="player4-role-image" src="images/roles/default.jpg" alt="Rol del Jugador 4" class="player-role-image">
+                <p>Posición: <span id="player4-pos">0</span></p>
+                <p>Puntos: <span id="player4-points">0</span></p>
+                <p>Rol: <span id="player4-role"></span></p>
+                <p class="player-role-ability" id="player4-role-ability"></p>
+            </div>
+            <div class="player-card" id="player-card-5" style="display:none;">
+                <div class="player-color-indicator" style="background-color: var(--orange);"></div>
+                <h3 id="player5-name">Jugador 5</h3>
+                <img id="player5-role-image" src="images/roles/default.jpg" alt="Rol del Jugador 5" class="player-role-image">
+                <p>Posición: <span id="player5-pos">0</span></p>
+                <p>Puntos: <span id="player5-points">0</span></p>
+                <p>Rol: <span id="player5-role"></span></p>
+                <p class="player-role-ability" id="player5-role-ability"></p>
+            </div>
+            <div class="player-card" id="player-card-6" style="display:none;">
+                <div class="player-color-indicator" style="background-color: var(--teal);"></div>
+                <h3 id="player6-name">Jugador 6</h3>
+                <img id="player6-role-image" src="images/roles/default.jpg" alt="Rol del Jugador 6" class="player-role-image">
+                <p>Posición: <span id="player6-pos">0</span></p>
+                <p>Puntos: <span id="player6-points">0</span></p>
+                <p>Rol: <span id="player6-role"></span></p>
+                <p class="player-role-ability" id="player6-role-ability"></p>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="game-button" id="start-game"><i class="fas fa-play"></i> Iniciar Juego</button>
+            <button class="game-button" id="roll-dice"><i class="fas fa-dice-d6"></i> Tirar Dado</button>
+            <button class="game-button" id="draw-card"><i class="fas fa-layer-group"></i> Robar Carta</button>
+            <button class="game-button" id="end-turn"><i class="fas fa-arrow-right-to-bracket"></i> Terminar Turno</button>
+        </div>
+
+        <div class="challenge-section">
+            <h3><i class="fas fa-question-circle"></i> Desafío Actual</h3>
+            <p id="current-challenge-text">Esperando para comenzar el juego. Configura el número de jugadores y haz clic en "Iniciar Juego".</p>
+            <div class="challenge-actions">
+                <button class="game-button complete-btn" id="complete-challenge"><i class="fas fa-check-circle"></i> Completar Desafío</button>
+                <button class="game-button skip-btn" id="skip-challenge"><i class="fas fa-times-circle"></i> Saltar Desafío</button>
+                <button class="game-button ability-btn" id="use-ability" style="display:none;"><i class="fas fa-star"></i> Usar Habilidad</button>
+            </div>
+        </div>
+
+        <div class="card-display-area">
+            <h2><i class="fas fa-id-badge"></i> Detalles de la Carta</h2>
+            <div class="card-details" id="card-details">
+                <img src="images/cards/default.jpg" alt="Imagen de la carta" class="card-image" id="card-image">
+                <h3 class="card-title" id="card-title">Título de la Carta</h3>
+                <p class="card-description" id="card-description">Descripción de la carta y el desafío.</p>
+            </div>
+        </div>
+        
+        <div class="game-board-container">
+            <img src="images/board/tablero.jpg" alt="Tablero de Juego Travesía Nostálgica" class="game-board-image" id="game-board">
+            <div class="player-marker" id="player-marker-0" style="background-color: var(--blue);"></div>
+            <div class="player-marker" id="player-marker-1" style="background-color: var(--red);"></div>
+            <div class="player-marker" id="player-marker-2" style="background-color: var(--green);"></div>
+            <div class="player-marker" id="player-marker-3" style="background-color: var(--purple); display:none;"></div>
+            <div class="player-marker" id="player-marker-4" style="background-color: var(--orange); display:none;"></div>
+            <div class="player-marker" id="player-marker-5" style="background-color: var(--teal); display:none;"></div>
+        </div>
+        
+        <div class="score-board">
+            <h2><i class="fas fa-trophy"></i> Marcador</h2>
+            <ul class="score-list" id="score-list">
+            </ul>
+        </div>
+    </div>
+    
+    <div class="modal" id="winner-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-modal">&times;</span>
+            <div class="winner-trophy">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <h2 class="winner-name" id="winner-name">¡Jugador 1 ha ganado!</h2>
+            <div class="winner-points" id="winner-points">Con 15 puntos</div>
+            <button class="restart-btn" id="restart-btn">
+                <i class="fas fa-redo"></i> Jugar de nuevo
+            </button>
+        </div>
+    </div>
+    
+    <div class="modal" id="interaction-modal">
+        <div class="modal-content">
+            <h3 id="interaction-title">Interacción Requerida</h3>
+            <p id="interaction-prompt"></p>
+            <div id="interaction-options"></div>
+            <button class="game-button" id="interaction-submit">Confirmar</button>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/dice.js"></script>
+    <script src="js/cards.js"></script>
+    <script src="js/board.js"></script> 
+    <script src="js/players.js"></script>
+    <script src="js/ui.js"></script>      
+    <script src="js/game.js"></script>    
+</body>
+</html>
