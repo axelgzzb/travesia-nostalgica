@@ -1,0 +1,910 @@
+:root {
+    --primary: #6d4c41;
+    --secondary: #8d6e63;
+    --light: #efebe9;
+    --dark: #3e2723;
+    --accent: #d7ccc8;
+    --white: #ffffff;
+    --black: #000000;
+    --blue: #2196F3;
+    --red: #f44336;
+    --green: #4CAF50;
+    --yellow: #FFEB3B;
+    --purple: #9c27b0; 
+    --orange: #ff9800; 
+    --teal: #009688;   
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--light);
+    color: var(--dark);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+    font-family: 'Cinzel Decorative', serif;
+    color: var(--primary);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+h2 i, h3 i { margin-right: 10px; }
+
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--secondary);
+    margin-top: -10px;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+/* Pre-game Customization Section Styles */
+.pregame-customization {
+    background-color: #fdfaf8;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+    border: 2px dashed var(--secondary);
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+}
+
+.pregame-customization h2 {
+    color: var(--primary);
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+.pregame-customization p {
+    color: var(--dark);
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+.player-setup-area {
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+.player-setup-area > div:first-child { /* For player count input */
+    margin-bottom: 10px;
+}
+.player-setup-area label {
+    margin-right: 10px;
+    color: var(--dark);
+}
+.player-setup-area input[type="number"] {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid var(--accent);
+    font-size: 1rem;
+    width: 60px;
+    text-align: center;
+}
+
+#player-names-inputs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center; /* Center the input groups */
+    width: 100%;
+    max-width: 400px; /* Max width for the name inputs area */
+}
+
+.player-name-input-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Pushes label and input apart if container is wide */
+    width: 100%;
+    padding: 5px 0;
+}
+.player-name-input-group label {
+    flex-basis: 40%; /* Give label some space */
+    text-align: right;
+    margin-right: 10px;
+}
+.player-name-input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid var(--accent);
+    font-size: 1rem;
+    flex-grow: 1; /* Input takes remaining space */
+}
+
+
+.custom-card-input-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.pregame-customization input[type="text"], 
+.pregame-customization textarea {
+    width: 90%;
+    max-width: 500px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--accent);
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+.pregame-customization input[type="text"]:focus, 
+.pregame-customization textarea:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 5px rgba(109, 76, 65, 0.3);
+}
+
+.pregame-customization textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.pregame-customization .game-button { 
+    padding: 12px 25px;
+    font-size: 1rem;
+}
+
+.custom-cards-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 10px;
+    min-height: 120px; 
+    background-color: rgba(0,0,0,0.02);
+    border-radius: 8px;
+}
+
+.custom-card-visual {
+    background-color: var(--white);
+    border: 2px solid var(--primary);
+    border-radius: 10px;
+    padding: 15px;
+    width: 220px; 
+    min-height: 150px;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.custom-card-visual h4 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: var(--dark);
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.3rem;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 5px;
+}
+
+.custom-card-visual p {
+    font-size: 0.9em;
+    line-height: 1.4;
+    color: var(--secondary);
+    flex-grow: 1; 
+    margin-bottom: 10px;
+}
+
+.custom-card-visual img {
+    max-width: 100%;
+    height: auto;
+    max-height: 100px; 
+    border-radius: 5px;
+    margin-top: 10px;
+    object-fit: cover; 
+    border: 1px solid var(--accent);
+}
+
+
+.game-info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--accent);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+
+.info-box {
+    text-align: center;
+    color: var(--dark);
+    font-size: 1.1rem;
+    display: flex; 
+    align-items: center;
+    gap: 8px; 
+}
+
+.info-box > i { 
+    color: var(--primary);
+    font-size: 1.3em; 
+}
+.current-turn { 
+    font-weight: 500;
+}
+
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.game-button {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: inline-flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+.game-button i {
+    margin-right: 8px;
+}
+
+.game-button:hover:not(:disabled) {
+    background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.game-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+    box-shadow: none;
+}
+
+.dice-display {
+    width: 60px;
+    height: 60px;
+    border: 3px solid var(--primary);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    transition: transform 0.1s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.dice-face {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.dice-dot {
+    width: 12px;
+    height: 12px;
+    background-color: var(--dark);
+    border-radius: 50%;
+    align-self: center;
+    justify-self: center;
+}
+
+.dice-dot.center { grid-area: 2 / 2 / 3 / 3; }
+.dice-dot.top-left { grid-area: 1 / 1 / 2 / 2; }
+.dice-dot.top-right { grid-area: 1 / 3 / 2 / 4; }
+.dice-dot.bottom-left { grid-area: 3 / 1 / 4 / 2; }
+.dice-dot.bottom-right { grid-area: 3 / 3 / 4 / 4; }
+.dice-dot.mid-left { grid-area: 2 / 1 / 3 / 2; } 
+.dice-dot.mid-right { grid-area: 2 / 3 / 3 / 4; }
+
+.dice-rolling {
+    animation: diceRoll 0.5s infinite alternate;
+}
+
+@keyframes diceRoll {
+    from { transform: rotate(0deg) scale(1); }
+    to { transform: rotate(15deg) scale(1.05); }
+}
+
+.player-info-section {
+    display: flex;
+    justify-content: center; 
+    gap: 15px; 
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.player-card {
+    background-color: var(--accent);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 180px; 
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.1);
+    display: none; 
+}
+
+.player-card.active-player {
+    border: 3px solid var(--primary);
+    box-shadow: 0 0 15px rgba(109, 76, 65, 0.5);
+}
+
+.player-color-indicator {
+    width: 100%;
+    height: 8px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.player-card h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: var(--dark);
+    font-size: 1.3rem; 
+    word-wrap: break-word; /* Ensure long names wrap */
+    min-height: 1.5em; /* Give space for name */
+}
+
+.player-role-image {
+    width: 50px; 
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    border: 1px solid var(--secondary);
+}
+
+.player-card p {
+    margin: 5px 0;
+    font-size: 0.9rem; 
+    color: var(--dark);
+}
+
+.player-card p span {
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.player-role-ability {
+    font-size: 0.8rem; 
+    font-style: italic;
+    color: var(--secondary);
+    margin-top: 8px;
+    min-height: 25px; 
+}
+
+
+.game-board-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px; 
+    margin: 0 auto 30px auto;
+    border: 2px solid var(--primary);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.game-board-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 15px; 
+}
+
+.player-marker {
+    position: absolute;
+    width: 28px; 
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    transition: left 0.8s ease-out, bottom 0.8s ease-out; 
+    display: none; 
+    z-index: 10; 
+}
+
+.player-marker::after { 
+    content: '';
+    position: absolute;
+    top: -8px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent; 
+    border-right: 7px solid transparent; 
+    border-bottom: 8px solid var(--white); 
+    display: none; 
+}
+
+.player-marker.active::after {
+    display: block; 
+}
+
+
+.challenge-section {
+    background-color: var(--light);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+    border: 1px dashed var(--primary);
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.1);
+}
+
+.challenge-section h3 {
+    color: var(--dark);
+    margin-top: 0;
+    font-size: 1.8rem;
+}
+
+#current-challenge-text {
+    font-size: 1.2rem;
+    color: var(--dark);
+    margin-bottom: 20px;
+    line-height: 1.5;
+    min-height: 40px; 
+}
+
+.challenge-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap; 
+}
+
+.challenge-actions .game-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+
+.challenge-actions .complete-btn {
+    background: linear-gradient(135deg, var(--green) 0%, #4CAF50 100%);
+}
+
+.challenge-actions .complete-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #4CAF50 0%, var(--green) 100%);
+}
+
+.challenge-actions .skip-btn {
+    background: linear-gradient(135deg, var(--red) 0%, #f44336 100%);
+}
+
+.challenge-actions .skip-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #f44336 0%, var(--red) 100%);
+}
+
+.challenge-actions .ability-btn { 
+    background: linear-gradient(135deg, var(--yellow) 0%, #FFC107 100%);
+    color: var(--dark);
+}
+.challenge-actions .ability-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #FFC107 0%, var(--yellow) 100%);
+}
+
+
+.card-display-area {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.card-display-area h2 {
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+
+.card-details {
+    background-color: var(--accent);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    margin: 0 auto;
+    border: 1px solid rgba(0,0,0,0.1);
+    transform: scale(0.9);
+    opacity: 0;
+    transition: all 0.3s ease-out;
+    pointer-events: none; 
+}
+
+.card-details.active {
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: all; 
+}
+
+.card-image {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    object-fit: contain; /* Ensures full image is visible, might add whitespace */
+}
+
+.card-title {
+    color: var(--dark);
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+
+.card-description {
+    color: var(--dark);
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.score-board {
+    background-color: var(--accent);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-top: 30px;
+}
+
+.score-board h2 {
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.score-list {
+    list-style: none;
+    padding: 0;
+}
+
+.score-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--white);
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-left: 5px solid var(--secondary);
+    transition: all 0.2s ease;
+}
+
+.score-item.leader {
+    border-left: 5px solid gold;
+    background-color: #fffde7;
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.player-info {
+    display: flex;
+    align-items: center;
+    overflow: hidden; /* For long player names */
+}
+
+.player-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 1px solid rgba(0,0,0,0.1);
+    flex-shrink: 0; /* Prevent color from shrinking */
+}
+
+.player-name {
+    font-weight: bold;
+    color: var(--dark);
+    white-space: nowrap; /* Prevent name from wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add ... if name is too long */
+    max-width: 150px; /* Adjust as needed */
+}
+
+.player-score {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 100; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.7); 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.modal-content {
+    background-color: var(--light);
+    margin: auto;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    animation: modalFadeIn 0.5s ease;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--secondary);
+}
+
+.winner-trophy {
+    font-size: 4rem;
+    color: gold;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.winner-name {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.winner-points {
+    font-size: 1.5rem;
+    color: var(--dark);
+    margin-bottom: 30px;
+}
+
+.restart-btn {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.restart-btn:hover {
+    background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+#interaction-modal .modal-content {
+    max-width: 600px; 
+}
+
+#interaction-title {
+    font-size: 1.8rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+#interaction-prompt {
+    font-size: 1.1rem;
+    color: var(--dark);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+#interaction-options {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#interaction-options label {
+    display: block;
+    padding: 10px;
+    background-color: var(--accent);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+#interaction-options label:hover {
+    background-color: var(--secondary);
+    color: var(--white);
+}
+
+#interaction-options input[type="radio"],
+#interaction-options input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+#interaction-options textarea {
+    width: 95%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--secondary);
+    font-family: 'Roboto', sans-serif;
+    min-height: 80px;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        margin: 10px auto;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+    .player-name-input-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .player-name-input-group label {
+        text-align: left;
+        margin-bottom: 5px;
+    }
+    .player-name-input {
+        width: 100%; /* Full width on smaller screens */
+    }
+
+
+    .game-info {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch; 
+    }
+    .info-box {
+        width: auto; 
+        justify-content: center; 
+    }
+
+
+    .controls {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center; 
+    }
+
+    .game-button {
+        width: 80%;
+        max-width: 300px; 
+        padding: 12px 20px; 
+    }
+
+    .player-info-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .player-card {
+        width: 90%;
+        max-width: 300px; 
+    }
+    
+    .pregame-customization input[type="text"], 
+    .pregame-customization textarea {
+        width: 95%;
+    }
+    .custom-card-visual {
+        width: 80%;
+        max-width: 250px;
+    }
+
+
+    .challenge-actions {
+        flex-direction: column;
+        align-items: center; 
+    }
+    .challenge-actions .game-button {
+        width: 70%;
+        max-width: 250px;
+    }
+
+    .card-details {
+        max-width: 90%;
+    }
+    .modal-content {
+        padding: 25px;
+    }
+    .winner-name {
+        font-size: 1.8rem;
+    }
+    .winner-points {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    .subtitle {
+        font-size: 0.9rem;
+    }
+    .game-button {
+        font-size: 1rem;
+        padding: 10px 15px;
+    }
+     .player-card h3 {
+        font-size: 1.2rem;
+    }
+    .player-card p {
+        font-size: 0.9rem;
+    }
+    .player-role-image {
+        width: 50px;
+    }
+    #current-challenge-text {
+        font-size: 1rem;
+    }
+    .card-title {
+        font-size: 1.4rem;
+    }
+    .card-description {
+        font-size: 0.9rem;
+    }
+    .player-card {
+        width: 85%; 
+    }
+    .player-name {
+        max-width: 120px; /* Further adjust for very small screens */
+    }
+}
