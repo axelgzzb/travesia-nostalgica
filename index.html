@@ -59,6 +59,99 @@
             <div id="custom-cards-display-area" class="custom-cards-display">
                 </div>
         </div>
+        <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travesía Nostálgica - Juego de Mesa Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        /* Estilos rápidos para el apartado de reglas */
+        .rules-section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 5px solid #004d00;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .rule-item {
+            font-size: 0.9em;
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .rule-item strong { color: #004d00; display: block; margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-chess-board"></i> Travesía Nostálgica</h1>
+        <p class="subtitle">Un viaje emocional a través de la nostalgia - Juego de mesa interactivo</p>
+
+        <div class="rules-section">
+            <h2><i class="fas fa-book-open"></i> Guía de Juego (Rulebook)</h2>
+            <p><strong>Objetivo:</strong> Avanzar por el tablero recolectando puntos a través de retos y minijuegos. ¡Gana la persona con más puntos al llegar al final!</p>
+            
+            <div class="rules-grid">
+                <div class="rule-item">
+                    <strong>1. Fases del Viaje</strong>
+                    El tablero se divide en 4 estaciones: Primavera (Inocencia), Verano (Crecimiento), Otoño (Pérdidas) e Invierno (Reflexión).
+                </div>
+                <div class="rule-item">
+                    <strong>2. Los Roles</strong>
+                    Cada jugador tiene una habilidad única: 
+                    <em>El Crítico, La Chispa, El Empático, El Viajero, La Musa o El Aleatorio.</em>
+                </div>
+                <div class="rule-item">
+                    <strong>3. Cómo Jugar</strong>
+                    Tira el dado, avanza y roba una carta. Si completas el reto, sumas puntos. ¡Ojo con las casillas de Tormenta de Melancolía!
+                </div>
+            </div>
+        </div>
+
+        <div class="pregame-customization" id="pregame-customization">
+            <h2><i class="fas fa-users"></i> Configuración de Jugadores</h2>
+            <div class="player-setup-area">
+                <div>
+                    <label for="player-count">Número de Jugadores (3-6):</label>
+                    <input type="number" id="player-count" name="player-count" min="3" max="6" value="3">
+                </div>
+                <div id="player-names-inputs-container">
+                    <div class="player-name-input-group" id="p1-name-group">
+                        <label for="player-1-name-input">Nombre Jugador 1:</label>
+                        <input type="text" id="player-1-name-input" class="player-name-input" placeholder="Jugador 1">
+                    </div>
+                    <div class="player-name-input-group" id="p2-name-group">
+                        <label for="player-2-name-input">Nombre Jugador 2:</label>
+                        <input type="text" id="player-2-name-input" class="player-name-input" placeholder="Jugador 2">
+                    </div>
+                    <div class="player-name-input-group" id="p3-name-group">
+                        <label for="player-3-name-input">Nombre Jugador 3:</label>
+                        <input type="text" id="player-3-name-input" class="player-name-input" placeholder="Jugador 3">
+                    </div>
+                    </div>
+            </div>
+            
+            <h2><i class="fas fa-palette"></i> Personaliza tus Cartas Visuales (Opcional)</h2>
+            <p>¡Crea elementos visuales para el juego! (Esto no añade cartas jugables al mazo)</p>
+            <div class="custom-card-input-area">
+                <input type="text" id="custom-card-title" placeholder="Título (Ej: Nombre Jugador / Rol)">
+                <textarea id="custom-card-description" placeholder="Descripción de la carta o habilidad"></textarea>
+                <input type="text" id="custom-card-image-url" placeholder="URL de la Imagen (opcional)">
+                <button id="add-custom-card-btn" class="game-button"><i class="fas fa-plus-circle"></i> Añadir Elemento Visual</button>
+            </div>
+            <div id="custom-cards-display-area" class="custom-cards-display"></div>
+        </div>
         
         <div class="game-info">
             <div class="info-box">
