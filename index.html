@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles/main.css">
     <style>
-        /* ESTILOS DEL BOTÓN FLOTANTE Y TOOLTIP DE REGLAS */
+        /* CSS PARA EL BOTÓN FLOTANTE DE INSTRUCCIONES */
         .help-container {
             position: fixed;
             top: 20px;
             right: 20px;
-            z-index: 1000;
+            z-index: 9999; /* Asegura que esté por encima de todo */
         }
 
         .help-button {
@@ -26,30 +26,32 @@
             align-items: center;
             justify-content: center;
             font-size: 24px;
-            cursor: help;
+            cursor: pointer;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
         }
 
         .help-button:hover {
             transform: scale(1.1);
+            background-color: #007300;
         }
 
+        /* EL CONTENIDO QUE APARECE AL HACER HOVER */
         .rules-tooltip {
             visibility: hidden;
-            width: 350px;
-            background-color: rgba(255, 255, 255, 0.98);
+            opacity: 0;
+            width: 320px;
+            background-color: white;
             color: #333;
-            text-align: left;
-            border-radius: 15px;
+            border-radius: 12px;
             padding: 20px;
             position: absolute;
             top: 60px;
             right: 0;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             border: 2px solid #004d00;
-            opacity: 0;
-            transition: opacity 0.3s;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(-10px);
             max-height: 80vh;
             overflow-y: auto;
         }
@@ -57,111 +59,89 @@
         .help-container:hover .rules-tooltip {
             visibility: visible;
             opacity: 1;
+            transform: translateY(0);
         }
 
-        .rules-tooltip h3 { color: #004d00; margin-top: 0; font-family: 'Cinzel Decorative', serif; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
-        .rules-tooltip h4 { color: #004d00; margin-bottom: 5px; font-size: 0.9em; }
-        .rules-tooltip p, .rules-tooltip li { font-size: 0.85em; line-height: 1.4; }
+        .rules-tooltip h3 { color: #004d00; margin: 0 0 10px 0; font-family: 'Cinzel Decorative', serif; font-size: 1.2em; border-bottom: 1px solid #eee; }
+        .rules-tooltip h4 { color: #444; margin: 15px 0 5px 0; font-size: 0.9em; text-transform: uppercase; }
+        .rules-tooltip p, .rules-tooltip li { font-size: 0.85em; line-height: 1.4; margin-bottom: 5px; }
         
-        .role-mini-grid {
+        .role-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            gap: 8px;
             margin-top: 10px;
         }
-        .role-mini-card {
-            background: #f0f0f0;
-            padding: 8px;
-            border-radius: 5px;
+        .role-item {
+            background: #f4f4f4;
+            padding: 6px;
+            border-radius: 4px;
             font-size: 0.75em !important;
+            border-left: 3px solid #004d00;
         }
     </style>
 </head>
 <body>
 
     <div class="help-container">
-        <div class="help-button"><i class="fas fa-question"></i></div>
+        <div class="help-button" title="Instrucciones">
+            <i class="fas fa-question"></i>
+        </div>
         <div class="rules-tooltip">
-            <h3>Cómo Jugar</h3>
-            <p><strong>Objetivo:</strong> Gana quien llegue al final con más puntos tras superar retos sobre sus recuerdos.</p>
+            <h3>Instrucciones</h3>
+            <p><strong>Meta:</strong> Llegar al final del tablero con la mayor puntuación completando retos de nostalgia.</p>
             
-            <h4>Estaciones:</h4>
+            <h4>Estaciones del Viaje</h4>
             <ul>
-                <li><strong>Primavera:</strong> Inocencia.</li>
-                <li><strong>Verano:</strong> Crecimiento.</li>
-                <li><strong>Otoño:</strong> Pérdidas.</li>
-                <li><strong>Invierno:</strong> Sabiduría.</li>
+                <li>🌸 <strong>Primavera:</strong> Inocencia</li>
+                <li>☀️ <strong>Verano:</strong> Crecimiento</li>
+                <li>🍂 <strong>Otoño:</strong> Pérdidas</li>
+                <li>❄️ <strong>Invierno:</strong> Reflexión</li>
             </ul>
 
-            <h4>Roles y Habilidades:</h4>
-            <div class="role-mini-grid">
-                <div class="role-mini-card"><strong>Crítico:</strong> Cambia 1 reto.</div>
-                <div class="role-mini-card"><strong>Chispa:</strong> Puntos por risas.</div>
-                <div class="role-mini-card"><strong>Empático:</strong> Puntos por colaborar.</div>
-                <div class="role-mini-card"><strong>Viajero:</strong> Avanza al chocar.</div>
-                <div class="role-mini-card"><strong>Musa:</strong> Copia puntos ajenos.</div>
-                <div class="role-mini-card"><strong>Aleatorio:</strong> Dado extra.</div>
+            <h4>Habilidades de Rol</h4>
+            <div class="role-grid">
+                <div class="role-item"><strong>Crítico:</strong> Cambia 1 reto.</div>
+                <div class="role-item"><strong>Chispa:</strong> Puntos por risas.</div>
+                <div class="role-item"><strong>Empático:</strong> Bonus colaborar.</div>
+                <div class="role-item"><strong>Viajero:</strong> Salto al chocar.</div>
+                <div class="role-item"><strong>Musa:</strong> Copia puntos.</div>
+                <div class="role-item"><strong>Aleatorio:</strong> +1 dado (6=pto).</div>
             </div>
-            <p style="margin-top:10px; font-style: italic;">Cuidado con la <strong>Tormenta de Melancolía</strong>, ¡te hará retroceder!</p>
+            <p style="margin-top:15px; font-size: 0.75em; color: #666;">⚠️ Cuidado con la <strong>Tormenta de Melancolía</strong>.</p>
         </div>
     </div>
 
     <div class="container">
         <h1><i class="fas fa-chess-board"></i> Travesía Nostálgica</h1>
-        <p class="subtitle">Un viaje emocional a través de la nostalgia - Juego de mesa interactivo</p>
+        <p class="subtitle">Un viaje emocional a través de la nostalgia</p>
 
         <div class="pregame-customization" id="pregame-customization">
             <h2><i class="fas fa-users"></i> Configuración de Jugadores</h2>
             <div class="player-setup-area">
-                <div>
-                    <label for="player-count">Número de Jugadores (3-6):</label>
-                    <input type="number" id="player-count" name="player-count" min="3" max="6" value="3">
-                </div>
+                <label for="player-count">Jugadores (3-6):</label>
+                <input type="number" id="player-count" min="3" max="6" value="3">
                 <div id="player-names-inputs-container">
-                    <div class="player-name-input-group" id="p1-name-group">
-                        <label for="player-1-name-input">Nombre Jugador 1:</label>
-                        <input type="text" id="player-1-name-input" class="player-name-input" placeholder="Jugador 1">
-                    </div>
-                    <div class="player-name-input-group" id="p2-name-group">
-                        <label for="player-2-name-input">Nombre Jugador 2:</label>
-                        <input type="text" id="player-2-name-input" class="player-name-input" placeholder="Jugador 2">
-                    </div>
-                    <div class="player-name-input-group" id="p3-name-group">
-                        <label for="player-3-name-input">Nombre Jugador 3:</label>
-                        <input type="text" id="player-3-name-input" class="player-name-input" placeholder="Jugador 3">
-                    </div>
                     </div>
             </div>
-            
-            <h2><i class="fas fa-palette"></i> Personaliza tus Cartas Visuales (Opcional)</h2>
-            <div class="custom-card-input-area">
-                <input type="text" id="custom-card-title" placeholder="Título">
-                <textarea id="custom-card-description" placeholder="Descripción"></textarea>
-                <input type="text" id="custom-card-image-url" placeholder="URL Imagen (opcional)">
-                <button id="add-custom-card-btn" class="game-button"><i class="fas fa-plus-circle"></i> Añadir Elemento</button>
-            </div>
-            <div id="custom-cards-display-area" class="custom-cards-display"></div>
+            <button id="start-game" class="game-button"><i class="fas fa-play"></i> Iniciar Juego</button>
         </div>
-        
+
         <div class="game-info">
-            <div class="info-box">
-                <i class="fas fa-user"></i>
-                <div class="current-turn" id="current-turn-display"></div>
-            </div>
-            <div class="info-box">
-                <i class="fas fa-dice-d6"></i>
-                <div class="dice-display" id="dice"></div>
-            </div>
+            <div class="info-box"><i class="fas fa-user"></i> <div id="current-turn-display"></div></div>
+            <div class="info-box"><i class="fas fa-dice-d6"></i> <div id="dice"></div></div>
         </div>
 
         <div class="controls">
-            <button class="game-button" id="start-game"><i class="fas fa-play"></i> Iniciar Juego</button>
-            <button class="game-button" id="roll-dice"><i class="fas fa-dice-d6"></i> Tirar Dado</button>
-            <button class="game-button" id="draw-card"><i class="fas fa-layer-group"></i> Robar Carta</button>
-            <button class="game-button" id="end-turn"><i class="fas fa-arrow-right-to-bracket"></i> Terminar Turno</button>
+            <button class="game-button" id="roll-dice">Tirar Dado</button>
+            <button class="game-button" id="draw-card">Robar Carta</button>
+            <button class="game-button" id="end-turn">Pasar Turno</button>
         </div>
 
-        </div>
+        <div class="game-board-container">
+            <img src="images/board/tablero.jpg" alt="Tablero" class="game-board-image" id="game-board">
+            </div>
+    </div>
 
     <script src="js/config.js"></script>
     <script src="js/dice.js"></script>
